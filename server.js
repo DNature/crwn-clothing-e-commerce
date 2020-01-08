@@ -14,12 +14,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
+console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  console.log('production');
+  app.use(express.static(path.join(__dirname, './client/build')));
 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, './client/build/index.html'), function(
+      err
+    ) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
   });
 }
 
