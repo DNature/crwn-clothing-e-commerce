@@ -4,6 +4,7 @@ export const SignInContainer = styled.div`
   width: 380px;
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 `;
 
 export const SignInTitle = styled.h2`
