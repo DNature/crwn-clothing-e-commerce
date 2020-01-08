@@ -7,11 +7,11 @@
   },
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "server": "NODE_ENV=development nodemon server.js",
     "build": "cd client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "NODE_ENV=production cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

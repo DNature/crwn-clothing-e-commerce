@@ -11,8 +11,8 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(sagaMiddleware),
-    process.env.NODE_ENV === 'development' && composeWithDevTools()
+    applyMiddleware(sagaMiddleware)
+    // process.env.NODE_ENV === 'development' && composeWithDevTools()
   )
 );
 
